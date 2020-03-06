@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583446972583.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "541938022",
+    "id" : "ED9609EB",
+    "lastKnownWriteTime" : 1583465117,
+    "last_content_update" : 1583465117658,
+    "path" : "~/Desktop/pa2/README.Rmd",
+    "project_path" : "README.Rmd",
+    "properties" : {
+        "cursorPosition" : "49,0",
+        "last_setup_crc32" : "7A871F1Ed581ac91",
+        "scrollLine" : "39"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

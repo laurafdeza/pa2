@@ -1,0 +1,54 @@
+# load packages
+library(tidyverse)
+# if package not installed, use devtools::instal_github()
+library(untidydata)
+
+# load data into R
+# ./ same directory, ../ one directory up
+my_data <- read_csv("./data.csv")
+mean(my_data$score)
+
+glimpse(spanish_vowels)
+new_vowels <- separate(data = spanish_vowels,
+         col = label,
+         into = c("id", "gender", "vowel"),
+         sep = "-")
+print(new_vowels)
+view(new_vowels)
+
+# Gather data from wide to long format
+# check arguments for a function args(function)
+long_vowels <- gather(data = new_vowels,
+       key = formant,
+       value = hertz,
+       -id, -gender, -vowel, -rep) 
+# %>% tail after ) shows the end of the new dataframe
+
+long_vowels %>%
+  summarize(mean_hertz = mean(hertz))
+
+long_vowels %>%
+  group_by(vowel) %>%
+  summarize(mean_hertz = mean(hertz))
+
+vowel_means <- long_vowels %>%
+  group_by(vowel, formant) %>%
+  summarize(mean_hertz = mean(hertz))
+
+# spread data from long to wide format
+mean_vowels_wide <- spread(data = vowel_means,
+       key = formant,
+       value = mean_hertz)
+
+# save new dataframe as .csv
+write_csv(mean_vowels_wide, path = "./new_vowel_data.csv")
+# ./ is optional here
+
+
+new_vowels %>%
+  ggplot(., aes(x = f2, y = f1, color = vowel, shape = gender)) +
+  facet_wrap(~ id) +
+  geom_point() +
+  scale_y_reverse() +
+  scale_x_reverse()
+  
